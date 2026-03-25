@@ -16,7 +16,7 @@ var config = {
     },
     backgroundColor: '#000000',
     pixelArt: true,
-    scene: [preload,myMap1,roomMap1,,myMap2,roomMap2,myMap3,roomMap3,winScene,gameOver,beforeRoom1]
+    scene: [preload,myMap1,roomMap1,,myMap2,roomMap2,myMap3,roomMap3,winScene,gameOver,beforeRoom]
 };
 
 

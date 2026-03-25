@@ -203,7 +203,7 @@ map2() {
 
 }
   roomMap1(player, tile) {
-    this.scene.start("beforeRoom1");
+    this.scene.start("beforeRoom");
   }
 
   endSceneFunc(){

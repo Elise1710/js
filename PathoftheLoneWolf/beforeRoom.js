@@ -2,7 +2,7 @@ class beforeRoom extends Phaser.Scene {
 
        constructor() {
         super({
-            key: 'beforeRoom1'
+            key: 'beforeRoom'
         });
     }
 
@@ -13,7 +13,7 @@ class beforeRoom extends Phaser.Scene {
 
    create() {
 
-            console.log('*** beforeRoom1 scene');
+            console.log('*** beforeRoom scene');
 
         this.add.image (480,480,'instruction')
 
@@ -24,7 +24,7 @@ class beforeRoom extends Phaser.Scene {
         // On spacebar event, call the world scene        
         spaceDown.on('down', function () {
 
-            this.scene.start('roomMap2');
+            this.scene.start('roomMap1');
         }, 
         this,
     );
