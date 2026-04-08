@@ -209,14 +209,9 @@ this.player.body.setSize(this.player.width * 0.8, this.player.height * 0.8)
 
 
     this.lifeText = this.add.text(
-      300,100, 'Life: 0', {font: "40px",fill: "#00FFFF",}
+      300,100, 'Life: 4', {font: "40px",fill: "#00FFFF",}
     ).setScrollFactor(0)
     .setDepth(999)
-
-    this.lifeText.setText(`Life: ${life} `)
-
-
-
 
 
     // create the arrow keys
