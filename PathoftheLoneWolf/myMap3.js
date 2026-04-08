@@ -145,6 +145,17 @@ this.physics.add.overlap(this.player, [this.orb1,this.orb2,this.orb3,this.orb4],
 
 this.physics.add.overlap(this.player, [this.boss1,this.boss2,this.boss3,this.boss4],this.hitEnemy, null,this);
 
+
+//Enable Layer Collisions
+this.LavaLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.LavaLayer)
+
+this.WallLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.WallLayer)
+
+
 // debug player
 window.player = this.player
 
@@ -298,16 +309,11 @@ this.player.body.setSize(this.player.width * 0.8, this.player.height * 0.8)
         repeat:-1
     });
 
+
+
+
     // create the arrow keys
 this.cursors = this.input.keyboard.createCursorKeys();
-
-this.LavaLayer.setCollisionByExclusion(-1, true);
-
-this.physics.add.collider(this.player, this.LavaLayer)
-
-this.WallLayer.setCollisionByExclusion(-1, true);
-
-this.physics.add.collider(this.player, this.WallLayer)
 
 		// camera follow player
     this.cameras.main.startFollow(this.player);

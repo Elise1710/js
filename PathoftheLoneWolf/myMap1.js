@@ -35,6 +35,9 @@ class myMap1 extends Phaser.Scene {
     this.load.image("Bushes", "assets/forest_demo_objects.png");
 
     this.load.image("Balcony", "assets/forest_demo_objects (1).png");
+    
+    this.load.image("Invisible Wall", "assets/forest_demo_objects (1).png");
+
 
     this.load.audio("enterSnd","assets/Entering.wav")
 
@@ -95,8 +98,10 @@ class myMap1 extends Phaser.Scene {
 
     let BalconyTiles = map.addTilesetImage("forest_demo_objects (1)", "Balcony")
 
+    let InvisibleWallTiles = map.addTilesetImage("forest_demo_objects (1)", "Invisible Wall")
+
     let tilesArray = [GrassTiles,GroundTiles,TreeTiles,RockTiles,Rock2Tiles,WaterTiles,
-        BridgeTiles,BushesTiles,BalconyTiles]
+        BridgeTiles,BushesTiles,BalconyTiles,InvisibleWallTiles]
 
          // Load in layers by layers
     this.GrassLayer = map.createLayer("Grass", tilesArray, 0,0,)
@@ -117,6 +122,7 @@ class myMap1 extends Phaser.Scene {
 
     this.BalconyLayer = map.createLayer("Balcony", tilesArray, 0,0,)
 
+    this.InvisibleWallLayer = map.createLayer("Invisible Wall", tilesArray, 0,0,)
     
      this.physics.world.bounds.width = this.GrassLayer.width;
    this.physics.world.bounds.height = this.GrassLayer.height;
@@ -145,6 +151,9 @@ class myMap1 extends Phaser.Scene {
    this.physics.world.bounds.width = this.BalconyLayer.width;
    this.physics.world.bounds.height = this.BalconyLayer.height;
 
+    this.physics.world.bounds.width = this.InvisibleWallLayer.width;
+   this.physics.world.bounds.height = this.InvisibleWallLayer.height;
+
 
 // Object Layers
 // Put Tiled object layer here
@@ -157,6 +166,33 @@ this.player = this.physics.add.sprite(startPoint.x, startPoint.y, 'Ashen');
 this.player.setScale(0.8);
 
 this.npc = this.add.sprite(npcPoint.x, npcPoint.y, 'Echo').setScale(0.55).play("Echo-down")
+
+
+//Enable Layer Collisions
+this.TreeLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.TreeLayer)
+
+this.RockLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.RockLayer)
+
+this.Rock2Layer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.Rock2Layer)
+
+this.WaterLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.WaterLayer)
+
+this.BushesLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.BushesLayer)
+
+this.InvisibleWallLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.InvisibleWallLayer)
+
 
 // debug player
 window.player = this.player
@@ -181,12 +217,16 @@ this.player.body.setSize(this.player.width * 0.8, this.player.height * 0.8)
 
 
 
-this.physics.add.collider(this.player)
+
+
     // create the arrow keys
 this.cursors = this.input.keyboard.createCursorKeys();
 
-// Camera follow player
-this.cameras.main.startFollow(this.player);
+ 		// camera follow player
+    this.cameras.main.startFollow(this.player);
+
+    // Prevent black area of edge of the map
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
   } /////////////////// end of create //////////////////////////////
 
