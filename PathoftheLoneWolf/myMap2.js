@@ -22,6 +22,8 @@ class myMap2 extends Phaser.Scene {
 
     this.load.image("Wall", "assets/crystal cave tiles.png");
 
+    this.load.image("Invisible Wall", "assets/crystal cave tiles (1).png");
+
     this.load.image("Doorway", "assets/crystal cave tiles.png");
 
     this.load.image("Mushroom", "assets/Glowing mushroom.png");
@@ -261,6 +263,8 @@ class myMap2 extends Phaser.Scene {
 
     let WallTiles = map.addTilesetImage("crystal cave tiles", "Wall");
 
+    let InvisibleWallTiles = map.addTilesetImage("crystal cave tiles (1)", "Invisible Wall")
+
     let CandleTiles = map.addTilesetImage("pixel-art-fire-torch-set", "Candle");
 
     let CrystalTiles = map.addTilesetImage("crystal cave tiles (1)", "Crystal")
@@ -282,7 +286,7 @@ class myMap2 extends Phaser.Scene {
     let StairsTiles = map.addTilesetImage("wooden_stairs-ns_1 (B&W) (2)", "Stairs")
     
 
-  let tilesArray = [GroundTiles,WallTiles,MushroomTiles,Mushroom2Tiles,
+  let tilesArray = [GroundTiles,WallTiles,InvisibleWallTiles,MushroomTiles,Mushroom2Tiles,
         CandleTiles,CrystalTiles,Crystal2Tiles,Crystal3Tiles,Crystal4Tiles,
         Crystal5Tiles,StoneTiles,StairsTiles]
 
@@ -290,6 +294,8 @@ class myMap2 extends Phaser.Scene {
     this.GroundLayer = map.createLayer("Ground", tilesArray, 0,0,)
 
     this.WallLayer = map.createLayer("Wall", tilesArray, 0,0,)
+
+    this.InvisibleWallLayer = map.createLayer("Invisible Wall", tilesArray, 0,0,)
 
     this.CandleLayer = map.createLayer("Candle", tilesArray, 0,0,)
 
@@ -369,6 +375,43 @@ this.physics.add.overlap(this.player, [this.orb1,this.orb2,this.orb3,this.orb4],
 this.physics.add.overlap(this.player, [this.enemy1,this.enemy2,this.enemy3,this.enemy4],this.hitEnemy, null,this);
 
 
+//Enable Layer Collisions
+this.WallLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.WallLayer)
+
+this.InvisibleWallLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.InvisibleWallLayer)
+
+this.CrystalLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.CrystalLayer)
+
+this.Crystal2Layer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.Crystal2Layer)
+
+this.Crystal3Layer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.Crystal3Layer)
+
+this.Crystal4Layer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.Crystal4Layer)
+
+this.Crystal5Layer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.Crystal5Layer)
+
+this.MushroomLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.MushroomLayer)
+
+this.Mushroom2Layer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.Mushroom2Layer)
+
     // // Add any text to the game
 
            this.orbText = this.add.text(
@@ -385,11 +428,16 @@ this.physics.add.overlap(this.player, [this.enemy1,this.enemy2,this.enemy3,this.
     this.lifeText.setText(`Life: ${life} `)
 
 
+
+
     // create the arrow keys
 this.cursors = this.input.keyboard.createCursorKeys();
 
-// Camera follow player
-this.cameras.main.startFollow(this.player);
+		// camera follow player
+    this.cameras.main.startFollow(this.player);
+    
+    // Prevent black area of edge of the map
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
 this.tweens.add({
   targets: this.enemy1,
