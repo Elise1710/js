@@ -301,8 +301,19 @@ this.player.body.setSize(this.player.width * 0.8, this.player.height * 0.8)
     // create the arrow keys
 this.cursors = this.input.keyboard.createCursorKeys();
 
-// Camera follow player
-this.cameras.main.startFollow(this.player);
+this.LavaLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.LavaLayer)
+
+this.WallLayer.setCollisionByExclusion(-1, true);
+
+this.physics.add.collider(this.player, this.WallLayer)
+
+		// camera follow player
+    this.cameras.main.startFollow(this.player);
+    
+    // Prevent black area of edge of the map
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
 this.tweens.add({
   targets: this.boss1,
