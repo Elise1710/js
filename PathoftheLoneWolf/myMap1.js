@@ -36,7 +36,12 @@ class myMap1 extends Phaser.Scene {
 
     this.load.image("Balcony", "assets/forest_demo_objects (1).png");
 
+    this.load.audio("enterSnd","assets/Entering.wav")
 
+    this.load.spritesheet("Echo", "assets/NPC-32x32.png", {
+            frameWidth: 134,
+            frameHeight: 135,
+        });
   }
   create() {
     console.log("*** myMap1 scene");
@@ -45,6 +50,27 @@ class myMap1 extends Phaser.Scene {
     let map = this.make.tilemap({
       key: "myMap1",
     });
+
+
+ if (globalBgMusic2) { // Check if globalBgMusic is defined before calling stop()
+            globalBgMusic2.stop();
+        }
+
+           if (globalBgMusic3) { // Check if globalBgMusic is defined before calling stop()
+            globalBgMusic3.stop();
+        }
+
+         if (globalBgMusic4) { // Check if globalBgMusic is defined before calling stop()
+            globalBgMusic4.stop();
+        }
+
+        this.anims.create({
+            key: 'Echo-down',
+            frames: this.anims.generateFrameNumbers('Echo',
+                { start: 3, end: 3 }),
+            frameRate: 5,
+            repeat: -1
+        });
 
    
     // Load the game tiles
@@ -130,7 +156,7 @@ var npcPoint = map.findObject("objectLayer2",(obj)=> obj.name === "npc")
 this.player = this.physics.add.sprite(startPoint.x, startPoint.y, 'Ashen');
 this.player.setScale(0.8);
 
-this.npc = this.physics.add.sprite(npcPoint.x, npcPoint.y, 'Echo').setScale(0.55).play("Echo-right")
+this.npc = this.add.sprite(npcPoint.x, npcPoint.y, 'Echo').setScale(0.55).play("Echo-down")
 
 // debug player
 window.player = this.player
@@ -140,16 +166,18 @@ this.player.body.setSize(this.player.width * 0.8, this.player.height * 0.8)
 
     // // Add any text to the game
     
-           this.orbText = this.add.text(
+            this.orbText = this.add.text(
       100,100, 'Orb: 0', {font: "40px",fill: "#00FFFF",}
     ).setScrollFactor(0)
     .setDepth(999)
 
 
     this.lifeText = this.add.text(
-      300,100, 'Life: 4', {font: "40px",fill: "#00FFFF",}
+      300,100, 'Life: 0', {font: "40px",fill: "#00FFFF",}
     ).setScrollFactor(0)
     .setDepth(999)
+
+    this.lifeText.setText(`Life: ${life} `)
 
 
 
@@ -170,8 +198,13 @@ this.cameras.main.startFollow(this.player);
     this.player.y > 930 
 
   ) {
-    console.log("Jump to myMap2")
-    this.map2()
+    console.log("Jump to storyboard 3 scene")
+    this.story3Scene()
+
+    // play a sound
+   this.enteringSnd=this.sound.add("enterSnd")
+
+        this.enteringSnd.play();
   }
 
 let speed = 200;
@@ -197,14 +230,11 @@ if (this.cursors.left.isDown) {
 }
 } /////////////////// end of update //////////////////////////////
 
-map2() {
+story3Scene() {
 
-  this.scene.start("myMap2")
+  this.scene.start("story3Scene")
 
 }
-  roomMap1(player, tile) {
-    this.scene.start("beforeRoom");
-  }
 
   endSceneFunc(){
   this.scene.start("roomMap1")

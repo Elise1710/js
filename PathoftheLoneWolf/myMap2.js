@@ -44,7 +44,34 @@ class myMap2 extends Phaser.Scene {
     
     this.load.image("Stairs", "assets/wooden_stairs-ns_1 (B&W) (2).png");
 
-  
+
+    this.load.audio("damageSnd","assets/Damage.wav")
+
+    this.load.audio("collectSnd","assets/Collect.wav")
+
+    this.load.audio("enterSnd","assets/Entering.wav")
+
+   this.load.spritesheet("enemy1", "assets/enemy1-32x32(1).png", {
+            frameWidth: 137,
+            frameHeight: 135,
+        });
+
+        this.load.spritesheet("enemy2", "assets/enemy2-32x32(1).png", {
+            frameWidth: 134,
+            frameHeight: 134,
+        });
+
+        this.load.spritesheet("enemy3", "assets/enemy1-32x32(2).png", {
+            frameWidth: 137,
+            frameHeight: 135,
+        });
+
+
+        this.load.spritesheet("enemy4", "assets/enemy2-32x32(2).png", {
+            frameWidth: 134,
+            frameHeight: 134,
+        });
+
 
     this.load.spritesheet("orb","assets/orb-32x32.png",{
     frameWidth: 134,
@@ -55,10 +82,162 @@ class myMap2 extends Phaser.Scene {
   create() {
     console.log("*** myMap2 scene");
 
+
     // Create the map from main
     let map = this.make.tilemap({
       key: "myMap2",
     });
+
+
+    if (globalBgMusic1) { // Check if globalBgMusic is defined before calling stop()
+            globalBgMusic1.stop();
+        }
+
+          if (globalBgMusic3) { // Check if globalBgMusic is defined before calling stop()
+            globalBgMusic3.stop();
+        }
+
+         if (globalBgMusic4) { // Check if globalBgMusic is defined before calling stop()
+            globalBgMusic4.stop();
+        }
+
+    // enemy1 movement
+
+     this.anims.create({
+        key:'enemy1-left',
+        frames:this.anims.generateFrameNumbers('enemy1',
+         { start:0, end:2 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+    this.anims.create({
+        key:'enemy1-right',
+        frames:this.anims.generateFrameNumbers('enemy1',
+           { start:3, end:5 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+     this.anims.create({
+        key:'enemy1-up',
+        frames:this.anims.generateFrameNumbers('enemy1',
+          { start:6, end:8 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+      this.anims.create({
+        key:'enemy1-down',
+        frames:this.anims.generateFrameNumbers('enemy1',
+       { start:9, end:11 }),
+        frameRate:5,
+        repeat:-1
+    }); 
+    
+    // enemy2 movement
+
+        this.anims.create({
+        key:'enemy2-up',
+        frames:this.anims.generateFrameNumbers('enemy2',
+         { start:0, end:2 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+      this.anims.create({
+        key:'enemy2-down',
+        frames:this.anims.generateFrameNumbers('enemy2',
+           { start:3, end:5 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+       this.anims.create({
+        key:'enemy2-right',
+        frames:this.anims.generateFrameNumbers('enemy2',
+          { start:6, end:8 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+        this.anims.create({
+        key:'enemy2-left',
+        frames:this.anims.generateFrameNumbers('enemy1',
+       { start:9, end:11 }),
+        frameRate:5,
+        repeat:-1
+    }); 
+    
+    // enemy3 movement
+
+            this.anims.create({
+        key:'enemy3-right',
+        frames:this.anims.generateFrameNumbers('enemy3',
+         { start:0, end:2 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+    this.anims.create({
+        key:'enemy3-left',
+        frames:this.anims.generateFrameNumbers('enemy3',
+           { start:3, end:5 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+     this.anims.create({
+        key:'enemy3-down',
+        frames:this.anims.generateFrameNumbers('enemy3',
+          { start:6, end:8 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+      this.anims.create({
+        key:'enemy3-up',
+        frames:this.anims.generateFrameNumbers('enemy3',
+       { start:9, end:11 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+     // enemy4 movement
+
+        this.anims.create({
+        key:'enemy4-down',
+        frames:this.anims.generateFrameNumbers('enemy4',
+         { start:0, end:2 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+          this.anims.create({
+        key:'enemy4-up',
+        frames:this.anims.generateFrameNumbers('enemy4',
+           { start:3, end:5 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+          this.anims.create({
+        key:'enemy4-left',
+        frames:this.anims.generateFrameNumbers('enemy4',
+          { start:6, end:8 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+        this.anims.create({
+        key:'enemy4-right',
+        frames:this.anims.generateFrameNumbers('enemy4',
+       { start:9, end:11 }),
+        frameRate:5,
+        repeat:-1
+    });
+
+
 
       this.anims.create({
         key: 'orbAnim',
@@ -178,11 +357,11 @@ this.orb4 = this.physics.add.sprite(item4.x, item4.y, 'orb').setScale(0.3).play(
 
 this.enemy1 = this.physics.add.sprite(enemy1.x, enemy1.y, 'enemy1').setScale(0.8).play("enemy1-left")
 
-this.enemy2 = this.physics.add.sprite(enemy2.x, enemy2.y, 'enemy2(1)').setScale(0.8).play("enemy2-right")
+this.enemy2 = this.physics.add.sprite(enemy2.x, enemy2.y, 'enemy2').setScale(0.8).play("enemy2-up")
 
-this.enemy3 = this.physics.add.sprite(enemy3.x, enemy3.y, 'enemy2').setScale(0.8).play("enemy2-left")
+this.enemy3 = this.physics.add.sprite(enemy3.x, enemy3.y, 'enemy3').setScale(0.8).play("enemy3-right")
 
-this.enemy4 = this.physics.add.sprite(enemy4.x, enemy4.y, 'enemy1(1)').setScale(0.8).play("enemy1-right")
+this.enemy4 = this.physics.add.sprite(enemy4.x, enemy4.y, 'enemy3').setScale(0.8).play("enemy4-down")
 
 
 this.physics.add.overlap(this.player, [this.orb1,this.orb2,this.orb3,this.orb4],this.collectOrb, null,this);
@@ -203,6 +382,7 @@ this.physics.add.overlap(this.player, [this.enemy1,this.enemy2,this.enemy3,this.
     ).setScrollFactor(0)
     .setDepth(999)
 
+    this.lifeText.setText(`Life: ${life} `)
 
 
     // create the arrow keys
@@ -210,6 +390,58 @@ this.cursors = this.input.keyboard.createCursorKeys();
 
 // Camera follow player
 this.cameras.main.startFollow(this.player);
+
+this.tweens.add({
+  targets: this.enemy1,
+  x: 400,
+  flipX: true,
+  yoyo: true,
+  duration:  1500,
+  repeat: -1,
+})
+
+this.tweens.add({
+  targets: this.enemy2,
+  y: 550,
+  // flipY: true,
+  yoyo: true,
+  duration:  1500,
+  repeat: -1,
+  onYoyo: () => {
+    this.enemy2.play("enemy2-down")
+  },
+
+  onRepeat:()=>{
+    this.enemy2.play("enemy2-up")
+  }
+})
+
+this.tweens.add({
+  targets: this.enemy3,
+  x: 550,
+  flipX: true,
+  yoyo: true,
+  duration: 1500,
+  repeat: -1,
+})
+
+this.tweens.add({
+  targets: this.enemy4,
+  y: 400,
+  // flipY: true,
+  yoyo: true,
+  duration: 1500,
+  repeat: -1,
+  onYoyo: () => {
+    this.enemy4.play("enemy4-up")
+  },
+
+  onRepeat:()=>{
+    this.enemy4.play("enemy4-down")
+  }
+})
+
+
 
   } /////////////////// end of create //////////////////////////////
 
@@ -221,8 +453,13 @@ this.cameras.main.startFollow(this.player);
     this.player.y < 106
 
   ) {
-    console.log("Jump to myMap3")
-    this.map3()
+  console.log("Jump to storyboard 5 scene")
+    this.story5Scene()
+
+    // play a sound
+   this.enteringSnd=this.sound.add("enterSnd")
+
+        this.enteringSnd.play();
   }
 
    if(
@@ -233,6 +470,17 @@ this.cameras.main.startFollow(this.player);
   ) {
     console.log("Jump to myMap1")
     this.map1()
+
+     // play a sound
+   this.enteringSnd=this.sound.add("enterSnd")
+
+        this.enteringSnd.play();
+
+                  // use global music variable, turn on loop, adjust the volume
+globalBgMusic1 = this.sound.add("forestSnd",{loop: true}).setVolume(1.0);
+
+// start the background musicc
+globalBgMusic1.play();
   }
   
 let speed = 200;
@@ -266,7 +514,12 @@ collectOrb (player, item) {
   
   item1++
 
-  this.orbText.setText('Orb: {} ');
+   // play a sound
+   this.collectItemSnd=this.sound.add("collectSnd")
+
+        this.collectItemSnd.play();
+
+  this.orbText.setText(`Orb: ${item1} `);
 
 
   // disable body
@@ -278,10 +531,16 @@ hitEnemy (player, enemy) {
   console.log("Player hit enemy")
 
   life--
+
+  // play a sound
+   this.damageHitSnd=this.sound.add("damageSnd")
+
+        this.damageHitSnd.play();
+
   //shake screen
   this.cameras.main.shake(300)
 
-  this.lifeText.setText('Life: {} ')
+  this.lifeText.setText(`Life: ${life} `);
 
 
   // disable body
@@ -292,10 +551,11 @@ hitEnemy (player, enemy) {
   }
 }
 
-map3() {
+story5Scene() {
 
-  this.scene.start("myMap3")
-} 
+  this.scene.start("story5Scene")
+
+}
 
 map1(){
 

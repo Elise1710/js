@@ -16,7 +16,8 @@ var config = {
     },
     backgroundColor: '#000000',
     pixelArt: true,
-    scene: [preload,myMap1,roomMap1,,myMap2,roomMap2,myMap3,roomMap3,winScene,gameOver,beforeRoom]
+    scene: [preload,myMap1,roomMap1,,myMap2,roomMap2,myMap3,roomMap3,winScene,gameOver,instructionScene,
+        story1Scene,story2Scene,story3Scene,story4Scene,story5Scene,story6Scene]
 };
 
 
@@ -27,3 +28,8 @@ let item1 = 0
 let item2 = 0
 let item3 = 0
 let item4 = 0
+
+let globalBgMusic1;
+let globalBgMusic2;
+let globalBgMusic3;
+let globalBgMusic4;
