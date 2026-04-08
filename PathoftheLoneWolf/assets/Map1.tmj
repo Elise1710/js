@@ -387,18 +387,6 @@
                  "width":0,
                  "x":481,
                  "y":63
-                }, 
-                {
-                 "height":0,
-                 "id":6,
-                 "name":"exit",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":480,
-                 "y":934
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -420,8 +408,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":384,
-                 "y":702
+                 "x":479.825771324864,
+                 "y":925.012704174229
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -429,8 +417,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":20,
- "nextobjectid":8,
+ "nextlayerid":21,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
@@ -439,7 +427,7 @@
         {
          "columns":34,
          "firstgid":1,
-         "image":"Pixel Lands Forest Demo\/forest_demo_objects.png",
+         "image":"forest_demo_objects.png",
          "imageheight":1105,
          "imagewidth":1105,
          "margin":0,
@@ -452,7 +440,7 @@
         {
          "columns":34,
          "firstgid":1157,
-         "image":"Pixel Lands Forest Demo\/forest_demo_terrain.png",
+         "image":"forest_demo_terrain.png",
          "imageheight":1105,
          "imagewidth":1105,
          "margin":0,
@@ -465,7 +453,7 @@
         {
          "columns":36,
          "firstgid":2313,
-         "image":"Pixel Lands Forest Demo\/forest_demo_objects (1).png",
+         "image":"forest_demo_objects (1).png",
          "imageheight":1159,
          "imagewidth":1159,
          "margin":0,

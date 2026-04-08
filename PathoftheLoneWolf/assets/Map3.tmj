@@ -140,7 +140,7 @@
                  "visible":true,
                  "width":0,
                  "x":482,
-                 "y":670
+                 "y":624
                 }, 
                 {
                  "height":0,
@@ -151,8 +151,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":242,
-                 "y":448
+                 "x":240,
+                 "y":480
                 }, 
                 {
                  "height":0,
@@ -163,8 +163,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":482,
-                 "y":224
+                 "x":480,
+                 "y":256
                 }, 
                 {
                  "height":0,
@@ -175,8 +175,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":722,
-                 "y":446
+                 "x":720,
+                 "y":474
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -192,14 +192,50 @@
                 {
                  "height":0,
                  "id":4,
-                 "name":"boss",
+                 "name":"boss1",
                  "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
                  "x":480,
-                 "y":450
+                 "y":194
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"boss2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":482,
+                 "y":688
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"boss3",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":768,
+                 "y":474
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"boss4",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":194,
+                 "y":478
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -230,8 +266,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":11,
- "nextobjectid":9,
+ "nextlayerid":12,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

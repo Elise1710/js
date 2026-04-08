@@ -538,8 +538,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":784,
-                 "y":220
+                 "x":785.742286751361,
+                 "y":253.103448275862
                 }, 
                 {
                  "height":0,
@@ -562,8 +562,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":784,
-                 "y":730
+                 "x":175.941923774955,
+                 "y":736.969147005445
                 }, 
                 {
                  "height":0,
@@ -574,8 +574,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":180,
-                 "y":732
+                 "x":782.831215970962,
+                 "y":728.515426497278
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -775,7 +775,7 @@
          "margin":0,
          "name":"pixel-art-fire-torch-set",
          "spacing":0,
-         "tilecount":64,
+         "tilecount":16,
          "tileheight":32,
          "tilewidth":32
         }],
